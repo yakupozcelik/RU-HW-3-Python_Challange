@@ -31,10 +31,23 @@ with open(csvpath, newline='', encoding="utf8") as csvfile:
 # print(row[0])
 
 
-
+largest_value = 0
+second_largest_value = 0
+first_candidate = "none"
 # after the for loops complete calculate the % of votes each candiadate won.
 # print the number of votes and % of total for each candidate
 for key, value in candidates.items():
     print (f"{key}: {value} ({round(value/number_of_votes*100, 2)}%)")
-# print the first and second candidate 
-   
+    # print the first and second candidate 
+    if value > largest_value:
+        second_candidate = first_candidate
+        first_candidate = key 
+        largest_value = value
+
+        
+    elif value > second_largest_value:
+        second_candidate = key 
+        second_largest_value = value
+
+print("\nfirst_candidate",first_candidate)
+print("second_candidate",second_candidate)
